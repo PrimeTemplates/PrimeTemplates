@@ -19,7 +19,7 @@ Premium & affordable digital templates for everyday needs.
 🚧 Coming soon
 
 ## Contact
-📧 Email: primetemplates@gmail.com  
+📧 Email: primetemplates1@gmail.com  
 💼 GitHub: https://github.com/PrimeTemplates
 
 ---
