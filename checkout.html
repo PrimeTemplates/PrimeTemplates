@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | PrimeTemplates</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #f4f7f9;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--light); 
+            padding: 20px; 
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .checkout-container { 
+            max-width: 450px; 
+            margin: 40px auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
+        }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h2 { font-size: 1.8rem; color: var(--dark); }
+        .header p { color: #7f8c8d; font-size: 0.9rem; }
+
+        .order-box { 
+            background: #f8f9fa; 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 25px;
+            border: 1px solid #edf2f7;
+        }
+
+        .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .total-row { 
+            border-top: 2px solid #ddd; 
+            padding-top: 15px; 
+            margin-top: 10px; 
+            font-weight: bold; 
+            font-size: 1.2rem; 
+            color: var(--primary);
+        }
+
+        /* Coupon Section */
+        .coupon-area { margin-bottom: 25px; }
+        .coupon-input-group { display: flex; gap: 10px; }
+        input { 
+            flex: 1; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            outline: none;
+        }
+        .apply-btn { 
+            background: var(--dark); 
+            color: white; 
+            border: none; 
+            padding: 0 20px; 
+            border-radius: 8px; 
+            cursor: pointer;
+        }
+
+        /* UPI Box */
+        .upi-pay-box {
+            background: #fff9eb;
+            border: 2px dashed #f1c40f;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .upi-id { 
+            font-size: 1.2rem; 
+            font-weight: bold; 
+            color: #d35400; 
+            margin: 10px 0;
+            display: block;
+        }
+
+        .copy-hint { font-size: 0.7rem; color: #95a5a6; text-transform: uppercase; }
+
+        .submit-btn { 
+            width: 100%; 
+            background: #833ab4; /* Instagram Purple */
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+
+        footer-links { text-align: center; margin-top: 30px; font-size: 0.75rem; color: #95a5a6; }
+        footer-links a { color: #95a5a6; text-decoration: none; margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+<div class="checkout-container">
+    <div class="header">
+        <h2>Secure Checkout</h2>
+        <p>Complete payment to receive your templates</p>
+    </div>
+
+    <div class="order-box">
+        <div class="row"><span>Premium Template Pack</span> <span>₹59</span></div>
+        <div id="discount-row" class="row" style="display:none; color: #27ae60;">
+            <span>Beta Member Discount</span> <span>-₹30</span>
+        </div>
+        <div class="row total-row"><span>Total Amount</span> <span id="final-amount">₹59</span></div>
+    </div>
+
+    <div class="coupon-area">
+        <p style="font-size: 0.8rem; margin-bottom: 8px; font-weight: 600;">Beta Code?</p>
+        <div class="coupon-input-group">
+            <input type="text" id="couponInput" placeholder="Enter 8-digit code">
+            <button class="apply-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <p id="couponMsg" style="font-size: 0.75rem; margin-top: 5px;"></p>
+    </div>
+
+    <div class="upi-pay-box">
+        <span class="copy-hint">Step 1: Transfer via UPI</span>
+        <span class="upi-id" id="upiId">owais2011@ibl</span>
+        <p style="font-size: 0.8rem;">Pay exactly <b><span id="pay-amt">₹59</span></b> to the ID above.</p>
+    </div>
+
+    <div style="text-align: center; margin-bottom: 20px;">
+        <p style="font-size: 0.85rem; color: #576574;">
+            <b>Step 2:</b> Take a screenshot of the successful payment and send it to our Instagram.
+        </p>
+    </div>
+
+    <button class="submit-btn" onclick="verifyOnInsta()">
+        Confirm via Instagram DM →
+    </button>
+
+    <div class="footer-links" style="text-align: center; margin-top: 30px; font-size: 0.75rem;">
+        <a href="#">Privacy</a> | <a href="#">Refunds</a> | <a href="#">Terms</a>
+    </div>
+</div>
+
+<script>
+    function applyCoupon() {
+        const val = document.getElementById('couponInput').value;
+        const msg = document.getElementById('couponMsg');
+        
+        // Pattern: Starts with PRM and is 8 chars long
+        if(val.toUpperCase().startsWith("PRM") && val.length === 8) {
+            document.getElementById('final-amount').innerText = "₹29";
+            document.getElementById('pay-amt').innerText = "₹29";
+            document.getElementById('discount-row').style.display = "flex";
+            msg.innerText = "✅ Beta Code Applied Successfully!";
+            msg.style.color = "#27ae60";
+        } else {
+            msg.innerText = "❌ Invalid Code. Please check again.";
+            msg.style.color = "#e74c3c";
+        }
+    }
+
+    function verifyOnInsta() {
+        // You can change this to your actual Instagram link
+        const instaURL = "https://ig.me/m/primetemplate1";
+        
+        alert("Redirecting to Instagram. Please attach your payment screenshot in the chat!");
+        window.location.href = instaURL;
+    }
+</script>
+
+</body>
+</html>
