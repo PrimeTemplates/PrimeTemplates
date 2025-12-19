@@ -5,212 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | PrimeTemplates</title>
     <style>
-        :root {
-            --primary: #3498db;
-            --secondary: #2ecc71;
-            --dark: #2c3e50;
-            --light: #f4f7f9;
-        }
-
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--light); 
-            padding: 20px; 
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        .checkout-container { 
-            max-width: 450px; 
-            margin: 40px auto; 
-            background: white; 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-        }
-
-        .header { text-align: center; margin-bottom: 30px; }
-        .header h2 { font-size: 1.8rem; color: var(--dark); }
-        .header p { color: #7f8c8d; font-size: 0.9rem; }
-
-        .order-box { 
-            background: #f8f9fa; 
-            padding: 20px; 
-            border-radius: 12px; 
-            margin-bottom: 25px;
-            border: 1px solid #edf2f7;
-        }
-
+        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f9; padding: 20px; color: #2c3e50; }
+        .checkout-container { max-width: 450px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .order-box { background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee; }
         .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .total-row { 
-            border-top: 2px solid #ddd; 
-            padding-top: 15px; 
-            margin-top: 10px; 
-            font-weight: bold; 
-            font-size: 1.2rem; 
-            color: var(--primary);
-        }
-
-        /* Coupon Section */
-        .coupon-area { margin-bottom: 25px; }
-        .coupon-input-group { display: flex; gap: 10px; }
-        input { 
-            flex: 1; 
-            padding: 12px; 
-            border: 1px solid #ddd; 
-            border-radius: 8px; 
-            outline: none;
-        }
-        .apply-btn { 
-            background: var(--dark); 
-            color: white; 
-            border: none; 
-            padding: 0 20px; 
-            border-radius: 8px; 
-            cursor: pointer;
-        }
-
-        /* UPI Box */
-        .upi-pay-box {
-            background: #fff9eb;
-            border: 2px dashed #f1c40f;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
-        .upi-id { 
-            font-size: 1.2rem; 
-            font-weight: bold; 
-            color: #d35400; 
-            margin: 10px 0;
-            display: block;
-        }
-
-        .copy-hint { font-size: 0.7rem; color: #95a5a6; text-transform: uppercase; }
-
-        .submit-btn { 
-            width: 100%; 
-            background: #833ab4; /* Instagram Purple */
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white; 
-            padding: 16px; 
-            border: none; 
-            border-radius: 12px; 
-            font-size: 1rem; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover { transform: translateY(-3px); opacity: 0.9; }
-
-        footer-links { text-align: center; margin-top: 30px; font-size: 0.75rem; color: #95a5a6; }
-        footer-links a { color: #95a5a6; text-decoration: none; margin: 0 10px; }
+        .total { font-weight: bold; font-size: 1.3rem; color: #3498db; border-top: 2px solid #ddd; padding-top: 15px; }
+        .upi-box { background: #fff9eb; border: 2px dashed #f1c40f; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        .confirm-btn { width: 100%; background: linear-gradient(45deg, #f09433, #bc1888); color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1rem; }
     </style>
 </head>
 <body>
 
 <div class="checkout-container">
-    <div class="header">
-        <h2>Secure Checkout</h2>
-        <p>Complete payment to receive your templates</p>
-    </div>
-
+    <h2 style="text-align:center; margin-bottom:20px;">Secure Checkout</h2>
+    
     <div class="order-box">
-        <div class="row"><span>Premium Template Pack</span> <span>₹59</span></div>
-        <div id="discount-row" class="row" style="display:none; color: #27ae60;">
-            <span>Beta Member Discount</span> <span>-₹30</span>
-        </div>
-        <div class="row total-row"><span>Total Amount</span> <span id="final-amount">₹59</span></div>
+        <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 5px;">ITEM SELECTED:</p>
+        <h3 id="displayItem" style="margin-bottom: 15px; color: #2c3e50;">Loading...</h3>
+        
+        <div class="row"><span>Standard Price</span> <span id="oldPrice">₹59</span></div>
+        <div id="discountRow" class="row" style="display:none; color: #27ae60;"><span>Beta Discount</span> <span>-₹30</span></div>
+        <div class="row total"><span>Total Amount</span> <span id="finalPrice">₹59</span></div>
     </div>
 
-    <div class="coupon-area">
-        <p style="font-size: 0.8rem; margin-bottom: 8px; font-weight: 600;">Beta Code?</p>
-        <div class="coupon-input-group">
-            <input type="text" id="couponInput" placeholder="Enter 8-digit code">
-            <button class="apply-btn" onclick="applyCoupon()">Apply</button>
-        </div>
-        <p id="couponMsg" style="font-size: 0.75rem; margin-top: 5px;"></p>
+    <div class="upi-box">
+        <p style="font-size: 0.8rem; margin-bottom: 5px;">STEP 1: PAY VIA UPI ID</p>
+        <strong style="font-size: 1.1rem; color: #d35400;">yourname@upi</strong>
+        <p style="font-size: 0.7rem; margin-top: 5px;">Pay exactly <span id="payPrompt">₹59</span></p>
     </div>
 
-    <div class="upi-pay-box">
-        <span class="copy-hint">Step 1: Transfer via UPI</span>
-        <span class="upi-id" id="upiId">owais2011@ibl</span>
-        <p style="font-size: 0.8rem;">Pay exactly <b><span id="pay-amt">₹59</span></b> to the ID above.</p>
-    </div>
+    <p style="font-size: 0.85rem; text-align: center; margin-bottom: 20px;">
+        STEP 2: Send the <b>Payment Screenshot</b> and <b>Beta Code Screenshot</b> to our Instagram.
+    </p>
 
-    <div style="text-align: center; margin-bottom: 20px;">
-        <p style="font-size: 0.85rem; color: #576574;">
-            <b>Step 2:</b> Take a screenshot of the successful payment and send it to our Instagram.
-        </p>
-    </div>
-
-    <button class="submit-btn" onclick="verifyOnInsta()">
-        Confirm via Instagram DM →
-    </button>
-
-    <div class="footer-links" style="text-align: center; margin-top: 30px; font-size: 0.75rem;">
-        <a href="#">Privacy</a> | <a href="#">Refunds</a> | <a href="#">Terms</a>
-    </div>
+    <button class="confirm-btn" onclick="confirmOrder()">Confirm via Instagram DM →</button>
 </div>
 
 <script>
-    function applyCoupon() {
-        const val = document.getElementById('couponInput').value;
-        const msg = document.getElementById('couponMsg');
-        
-        // Pattern: Starts with PRM and is 8 chars long
-        if(val.toUpperCase().startsWith("PRM") && val.length === 8) {
-            document.getElementById('final-amount').innerText = "₹29";
-            document.getElementById('pay-amt').innerText = "₹29";
-            document.getElementById('discount-row').style.display = "flex";
-            msg.innerText = "✅ Beta Code Applied Successfully!";
-            msg.style.color = "#27ae60";
-        } else {
-            msg.innerText = "❌ Invalid Code. Please check again.";
-            msg.style.color = "#e74c3c";
-        }
+    // READ THE DATA FROM THE URL
+    const params = new URLSearchParams(window.location.search);
+    const itemName = params.get('item') || "Premium Template";
+    const hasDiscount = params.get('discount') === 'true';
+
+    // DISPLAY THE DATA
+    document.getElementById('displayItem').innerText = itemName.replace(/-/g, ' ');
+
+    if(hasDiscount) {
+        document.getElementById('discountRow').style.display = 'flex';
+        document.getElementById('finalPrice').innerText = "₹29";
+        document.getElementById('payPrompt').innerText = "₹29";
     }
 
-    function verifyOnInsta() {
-        // You can change this to your actual Instagram link
-        const instaURL = "https://ig.me/m/primetemplate1";
-        
-        alert("Redirecting to Instagram. Please attach your payment screenshot in the chat!");
-        window.location.href = instaURL;
+    function confirmOrder() {
+        alert("Redirecting! Attach your screenshots in the Instagram chat.");
+        window.location.href = "https://ig.me/m/primetemplate1";
     }
 </script>
-<div style="text-align: center; padding: 20px; font-size: 0.8rem;">
-    <button onclick="showPolicy('privacy')" style="background:none; border:none; color:#95a5a6; cursor:pointer;">Privacy Policy</button> | 
-    <button onclick="showPolicy('refund')" style="background:none; border:none; color:#95a5a6; cursor:pointer;">Refund Policy</button>
-</div>
 
-<div id="policyModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:400px; background:white; padding:30px; border-radius:15px; box-shadow:0 0 100px rgba(0,0,0,0.5); z-index:3000;">
-    <h3 id="policyTitle">Policy</h3>
-    <p id="policyText" style="font-size: 0.9rem; margin: 15px 0; color: #576574;"></p>
-    <button onclick="closePolicy()" style="width:100%; background:#3498db; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Close</button>
-</div>
-
-<script>
-    function showPolicy(type) {
-        const modal = document.getElementById('policyModal');
-        const title = document.getElementById('policyTitle');
-        const text = document.getElementById('policyText');
-
-        if(type === 'privacy') {
-            title.innerText = "Privacy Policy";
-            text.innerText = "We only collect your email to deliver your template. Your data is never sold. Payments are verified manually via Instagram.";
-        } else {
-            title.innerText = "Refund Policy";
-            text.innerText = "Digital products are non-refundable. However, if the file is corrupted or doesn't open, we will send a new copy within 24 hours.";
-        }
-        modal.style.display = 'block';
-    }
-
-    function closePolicy() {
-        document.getElementById('policyModal').style.display = 'none';
-    }
-</script>
 </body>
 </html>
