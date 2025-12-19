@@ -270,6 +270,64 @@
             color: #7f8c8d;
             font-size: 0.95rem;
         }
+        /* Floating Contact Button */
+.prime-support-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #2c3e50; /* Professional Dark Blue */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prime-support-btn:hover {
+    transform: translateY(-5px);
+    background: #34495e;
+}
+
+.support-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.support-links {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+}
+
+.support-links a {
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.support-links a:hover {
+    color: #2ecc71; /* Green hover for links */
+}
+
+/* Formats Badge for the Button */
+.format-tag {
+    background: #f1c40f;
+    color: #2c3e50;
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-top: 5px;
+    font-weight: 800;
+}
     </style>
 </head>
 <body>
@@ -336,13 +394,18 @@
             </div>
         </div>
     </section>
-    <div class="contact-float">
-    <span class="contact-links">Support & Inquiries</span>
-    <div style="display: flex; gap: 15px; margin-top: 5px;">
-        <a href="mailto:primetemplates1@gmail.com" style="color: white; text-decoration: none;">📧 Email</a>
-        <span style="color: #555;">|</span>
-        <a href="https://instagram.com/primetemplate1" target="_blank" style="color: white; text-decoration: none;">📸 Instagram</a>
+    <div class="prime-support-btn">
+    <span class="support-label">Prime Support</span>
+    
+    <div class="support-links">
+        <a href="mailto:primetemplates1@gmail.com">Email</a>
+        <span>|</span>
+        <a href="https://instagram.com/primetemplate1" target="_blank">Instagram</a>
     </div>
+
+    <div class="format-tag">DOCX • PDF • GOOGLE DOCS</div>
+</div>
+   
 </div>
 
     <footer>
