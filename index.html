@@ -1,143 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>PrimeTemplates – Digital Templates Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteResumes | Professional Templates for Freshers</title>
+    <style>
+        /* Modern Reset & Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      text-align: center;
-    }
-    
+        body {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 20px;
-    }
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+        /* Hero Section */
+        .hero {
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
-    h2 {
-      font-weight: normal;
-      margin-bottom: 40px;
-      color: #f0f0f0;
-    }
+        .founder-badge {
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
 
-    .card {
-      background: #ffffff;
-      color: #333;
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 500px;
-      margin: auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            max-width: 800px;
+            line-height: 1.2;
+        }
 
-    .price {
-      font-size: 28px;
-      margin: 20px 0;
-      color: #764ba2;
-      font-weight: bold;
-    }
+        h1 span {
+            color: #3498db;
+        }
 
-    ul {
-      text-align: left;
-      line-height: 1.8;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            color: #576574;
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
 
-    button {
-      background: #764ba2;
-      color: white;
-      border: none;
-      padding: 14px 30px;
-      font-size: 18px;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+        /* The Chairman's Button */
+        .cta-button {
+            background: #2ecc71;
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+            transition: all 0.3s ease;
+        }
 
-    button:hover {
-      background: #5a3a8c;
-    }
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
+            background: #27ae60;
+        }
 
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #ddd;
-    }
-    .navbar {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
 
-.nav-btn {
-  background: #000;
-  color: #fff;
-  padding: 10px 18px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-}
+        .stat-item {
+            text-align: center;
+        }
 
-.nav-btn:hover {
-  background: #222;
-}
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
 
-  </style>
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
 
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #95a5a6;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .hero { padding: 60px 20px; }
+        }
+    </style>
 </head>
-
 <body>
-  <div class="navbar">
-  <a href="templates.html" class="nav-btn">Templates</a>
-</div>
 
+    <section class="hero">
+        <div class="founder-badge">By a 14-Year-Old Founder</div>
+        
+        <h1>Stop Applying with Boring Resumes. <span>Get Hired Faster.</span></h1>
+        
+        <p>Premium, ATS-friendly resume templates designed specifically for Indian Freshers. Start your career with confidence for just <b>₹59</b>.</p>
 
-  <div class="container">
-    <h1>PrimeTemplates</h1>
-    <h2>Premium Digital Templates for Career & Productivity</h2>
+        <a href="templates.html" class="cta-button">Browse Templates →</a>
 
-    <div class="card">
-      <h3>Professional Resume Templates</h3>
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-number">ATS</span>
+                <span class="stat-label">Friendly Designs</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">₹59</span>
+                <span class="stat-label">Affordable Price</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">Fast</span>
+                <span class="stat-label">Email Delivery</span>
+            </div>
+        </div>
+    </section>
 
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-    <div>
-        <span style="font-size: 1.2rem; font-weight: bold; color: #2ecc71;">₹99</span>
-    </div>
-
-      <ul>
-        <li>✔ ATS-Friendly Design</li>
-        <li>✔ Editable (Word / Powerpoint)</li>
-        <li>✔ Suitable for Freshers & Professionals</li>
-        <li>✔ Instant Access After Purchase</li>
-      </ul>
-
-      <!-- BUY BUTTON CONNECTED TO YOUR FORM -->
-      <a href="https://forms.gle/gTnLH2oK7oCiuCm59" target="_blank">
-        <button>Buy Now</button>
-      </a>
-      </div>
-
-<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
-
-</div>
-
-<br>
-
-</a>
     <footer>
-      <p>📧 Contact: PrimeTemplates1@gmail.com</p>
-      <p>© 2025 PrimeTemplates. All rights reserved.</p>
+        &copy; 2025 EliteResumes. Built for Freshers, by a Founder.
     </footer>
-  </div>
 
 </body>
 </html>
