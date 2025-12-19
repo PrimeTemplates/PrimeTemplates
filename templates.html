@@ -178,24 +178,27 @@
 
         <a href="index.html" class="back-link">← Back to Home</a>
     </div>
-        <script>
+       <script>
 function verifyCode() {
     const code = document.getElementById('couponInput').value;
     const message = document.getElementById('message');
     
-    // THE SECRET RULE: 
-    // Let's say every valid code MUST start with "PRM" and have 8 characters.
-    // Example: PRM12345
-    
+    // Pattern: PRM + 5 more characters (Total 8)
     if (code.length === 8 && code.startsWith("PRM")) {
         message.style.color = "#27ae60";
-        message.innerHTML = "✅ SUCCESS! Price dropped to ₹29. Pay via UPI now.";
+        // THE UPDATED INSTRUCTION
+        message.innerHTML = `
+            ✅ CODE APPLIED! Price: <span style="font-size: 1.2rem;">₹29</span><br>
+            <small style="color: #2c3e50;">📸 Please take a screenshot of this "Success" message and attach it to your payment/order form to verify your Beta Discount.</small>
+        `;
         
-        // CEO MOVE: This actually changes the price text on the page!
-        document.querySelector('.stat-number').innerHTML = "₹29"; 
+        // This finds the price in your hero section and updates it
+        const priceElement = document.querySelector('.stat-number');
+        if(priceElement) priceElement.innerHTML = "₹29"; 
+        
     } else {
         message.style.color = "#e74c3c";
-        message.innerHTML = "❌ Invalid Beta Code. Try again.";
+        message.innerHTML = "❌ Invalid Beta Code. Make sure it's 8 characters and starts with PRM.";
     }
 }
 </script>
