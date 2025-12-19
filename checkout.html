@@ -3,91 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | PrimeTemplates</title>
+    <title>Complete Your Order | PrimeTemplates</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #f4f7f9; padding: 20px; color: #2c3e50; }
-        .checkout-container { max-width: 450px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .order-box { background: #f8f9fa; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #eee; }
-        .row { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .total { font-weight: bold; font-size: 1.3rem; color: #3498db; border-top: 2px solid #ddd; padding-top: 15px; }
-        .upi-box { background: #fff9eb; border: 2px dashed #f1c40f; padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
-        .confirm-btn { width: 100%; background: linear-gradient(45deg, #f09433, #bc1888); color: white; padding: 16px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 1rem; }
-        input { width: 70%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-right: 5px; }
-        .apply-btn { padding: 10px; background: #2c3e50; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        body { font-family: 'Inter', sans-serif; background: #f4f7f9; padding: 20px; color: #2d3748; }
+        .checkout-card { max-width: 420px; margin: 50px auto; background: white; padding: 35px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.08); }
+        .order-summary { background: #f7fafc; padding: 20px; border-radius: 16px; margin-bottom: 25px; }
+        .row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+        .total-row { border-top: 2px solid #e2e8f0; margin-top: 15px; padding-top: 15px; font-weight: 800; font-size: 1.2rem; color: #3182ce; }
+        .upi-box { background: #fffaf0; border: 2px dashed #ecc94b; padding: 20px; border-radius: 16px; text-align: center; margin-bottom: 25px; }
+        .coupon-group { display: flex; gap: 8px; margin-bottom: 20px; }
+        input { flex: 1; padding: 12px; border: 1px solid #e2e8f0; border-radius: 10px; outline: none; }
+        .btn-apply { background: #2d3748; color: white; border: none; padding: 0 15px; border-radius: 10px; cursor: pointer; }
+        .btn-confirm { width: 100%; background: #3182ce; color: white; padding: 18px; border: none; border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 14px rgba(49, 130, 206, 0.4); }
     </style>
 </head>
 <body>
 
-<div class="checkout-container">
-    <h2 style="text-align:center; margin-bottom:20px;">Secure Checkout</h2>
-    
-    <div class="order-box">
-        <p style="font-size: 0.7rem; color: #7f8c8d; margin-bottom: 5px;">SELECTED ITEM:</p>
-        <h3 id="displayItem" style="margin-bottom: 15px; color: #2c3e50;">Loading...</h3>
-        
-        <div class="row"><span>Original Price</span> <span id="basePrice">₹0</span></div>
-        <div id="discountRow" class="row" style="display:none; color: #27ae60;"><span>Beta Discount</span> <span id="discountAmt">-₹0</span></div>
-        <div class="row total"><span>Final Total</span> <span id="finalPrice">₹0</span></div>
+<div class="checkout-card">
+    <h2 style="text-align: center; margin-bottom: 25px;">Checkout</h2>
+
+    <div class="order-summary">
+        <p style="font-size: 0.75rem; font-weight: 700; color: #718096; margin-bottom: 4px;">YOUR SELECTION</p>
+        <h3 id="itemName" style="margin-bottom: 15px;">Product Name</h3>
+        <div class="row"><span>Base Price</span> <span id="baseDisplay">₹0</span></div>
+        <div id="discRow" class="row" style="display:none; color: #38a169;"><span>Beta Discount</span> <span id="discAmt">-₹0</span></div>
+        <div class="row total-row"><span>To Pay</span> <span id="finalDisplay">₹0</span></div>
     </div>
 
-    <div style="margin-bottom: 20px; text-align: center;">
-        <input type="text" id="checkoutCoupon" placeholder="Have a Beta Code?">
-        <button class="apply-btn" onclick="applyCheckoutCode()">Apply</button>
-        <p id="couponMsg" style="font-size: 0.8rem; margin-top: 5px;"></p>
+    <div class="coupon-group">
+        <input type="text" id="checkCode" placeholder="Enter PRM Code">
+        <button class="btn-apply" onclick="applyCode()">Apply</button>
     </div>
 
     <div class="upi-box">
-        <p style="font-size: 0.8rem; margin-bottom: 5px;">STEP 1: PAY VIA UPI</p>
-        <strong style="font-size: 1.1rem; color: #d35400;">yourname@upi</strong>
-        <p style="font-size: 0.7rem; margin-top: 5px;">Transfer exactly <b id="payPrompt">₹0</b></p>
+        <p style="font-size: 0.8rem; font-weight: 700; margin-bottom: 8px;">PAY VIA UPI</p>
+        <p style="font-size: 1.1rem; font-weight: 800; color: #c05621;">owais2011@ibl</p>
+        <p style="font-size: 0.75rem; margin-top: 8px;">Transfer exactly <b id="payPrompt">₹0</b></p>
     </div>
 
-    <p style="font-size: 0.8rem; text-align: center; color: #7f8c8d; margin-bottom: 15px;">
-        📸 Screenshot the payment & the success message, then click below:
+    <p style="font-size: 0.8rem; text-align: center; color: #718096; margin-bottom: 20px;">
+        Take a screenshot of payment and send to Instagram DMs for the file.
     </p>
 
-    <button class="confirm-btn" onclick="confirmOrder()">Confirm on Instagram →</button>
+    <button class="btn-confirm" onclick="toInsta()">Confirm on Instagram →</button>
 </div>
 
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const itemName = params.get('item') || "Premium Template";
-    let price = parseInt(params.get('price')) || 59;
-    const hasPreDiscount = params.get('discount') === 'true';
+    const urlParams = new URLSearchParams(window.location.search);
+    const item = urlParams.get('item') || "Premium Template";
+    const basePrice = parseInt(urlParams.get('price')) || 59;
+    const preDisc = urlParams.get('discount') === 'true';
 
-    document.getElementById('displayItem').innerText = itemName.replace(/-/g, ' ');
-    document.getElementById('basePrice').innerText = "₹" + price;
-    updatePricing(price);
+    document.getElementById('itemName').innerText = item.replace(/-/g, ' ');
+    document.getElementById('baseDisplay').innerText = "₹" + basePrice;
+    
+    // Initial Price calculation
+    let currentTotal = basePrice;
+    updateUI(currentTotal);
 
-    if(hasPreDiscount) { applyDiscount(); }
+    if(preDisc) applyCodeLogic();
 
-    function updatePricing(amt) {
-        document.getElementById('finalPrice').innerText = "₹" + amt;
-        document.getElementById('payPrompt').innerText = "₹" + amt;
+    function updateUI(val) {
+        document.getElementById('finalDisplay').innerText = "₹" + val;
+        document.getElementById('payPrompt').innerText = "₹" + val;
     }
 
-    function applyDiscount() {
-        let discount = (price > 100) ? 100 : 30; // ₹100 off for bundle, ₹30 for single
-        document.getElementById('discountRow').style.display = 'flex';
-        document.getElementById('discountAmt').innerText = "-₹" + discount;
-        updatePricing(price - discount);
+    function applyCodeLogic() {
+        // If price is 300, give 100 off. If 59, give 30 off.
+        let savings = (basePrice >= 300) ? 100 : 30;
+        document.getElementById('discRow').style.display = 'flex';
+        document.getElementById('discAmt').innerText = "-₹" + savings;
+        updateUI(basePrice - savings);
     }
 
-    function applyCheckoutCode() {
-        const code = document.getElementById('checkoutCoupon').value.toUpperCase();
-        if(code.startsWith("PRM") && code.length === 8) {
-            applyDiscount();
-            document.getElementById('couponMsg').innerText = "✅ Code Applied!";
-            document.getElementById('couponMsg').style.color = "#27ae60";
+    function applyCode() {
+        const c = document.getElementById('checkCode').value.toUpperCase();
+        if(c.startsWith("PRM") && c.length === 8) {
+            applyCodeLogic();
         } else {
-            document.getElementById('couponMsg').innerText = "❌ Invalid Code";
-            document.getElementById('couponMsg').style.color = "#e74c3c";
+            alert("Invalid Code");
         }
     }
 
-    function confirmOrder() {
-        window.location.href = "https://ig.me/m/primetemplate1";
-    }
+    function toInsta() { window.location.href = "https://ig.me/m/primetemplate1"; }
 </script>
 
 </body>
