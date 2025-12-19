@@ -181,6 +181,36 @@
         window.location.href = instaURL;
     }
 </script>
+<div style="text-align: center; padding: 20px; font-size: 0.8rem;">
+    <button onclick="showPolicy('privacy')" style="background:none; border:none; color:#95a5a6; cursor:pointer;">Privacy Policy</button> | 
+    <button onclick="showPolicy('refund')" style="background:none; border:none; color:#95a5a6; cursor:pointer;">Refund Policy</button>
+</div>
 
+<div id="policyModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:90%; max-width:400px; background:white; padding:30px; border-radius:15px; box-shadow:0 0 100px rgba(0,0,0,0.5); z-index:3000;">
+    <h3 id="policyTitle">Policy</h3>
+    <p id="policyText" style="font-size: 0.9rem; margin: 15px 0; color: #576574;"></p>
+    <button onclick="closePolicy()" style="width:100%; background:#3498db; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Close</button>
+</div>
+
+<script>
+    function showPolicy(type) {
+        const modal = document.getElementById('policyModal');
+        const title = document.getElementById('policyTitle');
+        const text = document.getElementById('policyText');
+
+        if(type === 'privacy') {
+            title.innerText = "Privacy Policy";
+            text.innerText = "We only collect your email to deliver your template. Your data is never sold. Payments are verified manually via Instagram.";
+        } else {
+            title.innerText = "Refund Policy";
+            text.innerText = "Digital products are non-refundable. However, if the file is corrupted or doesn't open, we will send a new copy within 24 hours.";
+        }
+        modal.style.display = 'block';
+    }
+
+    function closePolicy() {
+        document.getElementById('policyModal').style.display = 'none';
+    }
+</script>
 </body>
 </html>
