@@ -13,12 +13,12 @@
         .header h1 { font-size: 2.5rem; color: var(--dark); letter-spacing: -1px; }
         .header p { color: #7f8c8d; margin-top: 10px; }
 
-        /* The Grid - This will now fit 3 or 4 per row tonight */
+        /* FIXED GRID: 3 columns on desktop, 1 on mobile */
         .template-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
             gap: 30px; 
-            max-width: 1200px; 
+            max-width: 1100px; 
             margin: 0 auto 50px; 
         }
         
@@ -28,7 +28,7 @@
             display: flex; flex-direction: column; border: 1px solid #edf2f7;
         }
         .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+        .card img { width: 100%; height: auto; display: block; cursor: zoom-in; border-bottom: 1px solid #eee; }
         
         .card-content { padding: 20px; flex-grow: 1; }
         .card-title { font-size: 1.1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
@@ -42,7 +42,7 @@
 
         .beta-section {
             max-width: 500px; margin: 0 auto 40px; padding: 30px; 
-            background: white; border-radius: 20px; border: 2px dashed #cbd5e0;
+            background: white; border-radius: 20px; border: 2px dashed #cbd5e0; text-align: center;
         }
         .beta-section input { 
             padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; 
@@ -56,7 +56,7 @@
             color: white; padding: 20px 40px; border-radius: 50px; 
             text-decoration: none; font-weight: 800; z-index: 2000;
             box-shadow: 0 10px 30px rgba(46, 204, 113, 0.4); 
-            border: 2px solid white; animation: pulse 2s infinite;
+            border: 2px solid white; animation: pulse 2s infinite; text-align: center; white-space: nowrap;
         }
 
         @keyframes pulse { 0% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.05); } 100% { transform: translateX(-50%) scale(1); } }
@@ -69,7 +69,7 @@
 
 <div class="header">
     <h1>Prime Resume Store</h1>
-    <p>Choose your professional edge. PPT format delivered instantly.</p>
+    <p>Premium designs for the modern professional.</p>
 </div>
 
 <div class="container">
@@ -78,23 +78,49 @@
             <img src="template1-preview.png" onclick="openPreview(this.src)">
             <div class="card-content">
                 <div class="card-title">Modern Professional (No.1)</div>
-                <p style="color: #7f8c8d; font-size: 0.85rem;">Sleek, ATS-friendly layout.</p>
+                <p style="color: #7f8c8d; font-size: 0.85rem;">ATS-friendly and high impact.</p>
             </div>
             <a href="checkout.html?item=Modern-Professional&price=59" class="card-buy-btn">Buy Single - ₹59</a>
         </div>
 
+        <div class="card">
+            <img src="template2-preview.png" onclick="openPreview(this.src)">
+            <div class="card-content">
+                <div class="card-title">Minimalist White (No.2)</div>
+                <p style="color: #7f8c8d; font-size: 0.85rem;">Perfect for corporate roles.</p>
+            </div>
+            <a href="checkout.html?item=Minimalist-White&price=59" class="card-buy-btn">Buy Single - ₹59</a>
         </div>
+
+        <div class="card">
+            <img src="template3-preview.png" onclick="openPreview(this.src)">
+            <div class="card-content">
+                <div class="card-title">Executive 2025 (No.3)</div>
+                <p style="color: #7f8c8d; font-size: 0.85rem;">Modern design for managers.</p>
+            </div>
+            <a href="checkout.html?item=Executive-2025&price=59" class="card-buy-btn">Buy Single - ₹59</a>
+        </div>
+
+        <div class="card">
+            <img src="template4-preview.png" onclick="openPreview(this.src)">
+            <div class="card-content">
+                <div class="card-title">Creative Designer (No.4)</div>
+                <p style="color: #7f8c8d; font-size: 0.85rem;">Showcase your portfolio style.</p>
+            </div>
+            <a href="checkout.html?item=Creative-Designer&price=59" class="card-buy-btn">Buy Single - ₹59</a>
+        </div>
+    </div>
 
     <div class="beta-section">
         <p style="font-weight: 800; margin-bottom: 15px; font-size: 0.9rem;">BETA ACCESS CODE</p>
-        <input type="text" id="betaInput" placeholder="Enter 8-digit code">
+        <input type="text" id="betaInput" placeholder="Enter PRM Code">
         <button class="apply-btn" onclick="applyBeta()">Verify</button>
         <p id="betaMsg" style="margin-top: 15px; font-size: 0.85rem; font-weight: bold;"></p>
     </div>
 </div>
 
 <a href="checkout.html?item=Full-Bundle-Pack&price=300" id="bundleBtn" class="floating-bundle-btn">
-    🚀 UNLOCK ALL TEMPLATES - ₹300
+    🚀 UNLOCK ALL 10+ TEMPLATES - ₹300
 </a>
 
 <div id="modal" class="modal" onclick="this.style.display='none'">
@@ -108,7 +134,7 @@
         const val = document.getElementById('betaInput').value.toUpperCase();
         const msg = document.getElementById('betaMsg');
         if(val.startsWith("PRM") && val.length === 8) {
-            msg.innerHTML = "✅ Code Accepted! Discount will be visible on the payment page.";
+            msg.innerHTML = "✅ Code Accepted! Discount applied at checkout.";
             msg.style.color = "#27ae60";
             document.querySelectorAll('a').forEach(link => {
                 if(link.href.includes('checkout.html') && !link.href.includes('discount=true')) {
