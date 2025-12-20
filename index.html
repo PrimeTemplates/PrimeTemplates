@@ -3,417 +3,276 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrimeTemplates | Professional Templates for Freshers</title>
+    <title>PrimeTemplates | Elite Career Assets for Freshers</title>
     <style>
-        /* Modern Reset & Font */
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #10b981;
+            --dark: #0f172a;
+            --accent: #f59e0b;
+            --bg: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            margin: 0; padding: 0; box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
         }
 
-        body {
-            background-color: #ffffff;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
+        body { background-color: var(--bg); color: var(--dark); line-height: 1.6; }
 
-        /* Hero Section */
-        .hero {
-            padding: 100px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 80vh;
+        /* --- NAVIGATION --- */
+        nav {
+            padding: 20px 5%;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; color: var(--dark); letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 120px 20px 80px;
+            text-align: center;
+            background: radial-gradient(circle at top right, #eff6ff, transparent),
+                        radial-gradient(circle at bottom left, #f0fdf4, transparent);
+            min-height: 90vh;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
         .founder-badge {
-            background: #3498db;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
+            background: #dbeafe;
+            color: var(--primary-dark);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 24px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid #bfdbfe;
         }
 
         h1 {
-            font-size: 3rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            max-width: 800px;
-            line-height: 1.2;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 900px;
         }
 
         h1 span {
-            color: #3498db;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: #576574;
+            font-size: 1.25rem;
+            color: #475569;
+            max-width: 650px;
             margin-bottom: 40px;
-            max-width: 600px;
         }
 
-        /* The Chairman's Button */
-        .cta-button {
-            background: #2ecc71;
+        /* --- INTERACTIVE BUTTONS --- */
+        .main-cta {
+            background: var(--dark);
             color: white;
-            padding: 18px 40px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 20px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.2);
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(46, 204, 113, 0.4);
-            background: #27ae60;
+        .main-cta:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.3);
+            background: #1e293b;
         }
 
-        /* Stats Section (Top one) */
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
+        /* --- THE SERVICES BOX (BOTTOM CONTROL CENTER) --- */
+        .services-container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 40px;
+            background: #f8fafc;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
             text-align: center;
         }
 
-        .stat-number {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
+        .services-container h2 { margin-bottom: 30px; font-size: 1.5rem; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        .stat-label {
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-
-        /* Features Section */
-        .features {
-            padding: 80px 20px;
-            background: #ffffff;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #2c3e50;
-        }
-
-        .features-grid {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            width: 300px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .feature-card:hover {
-            background: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .feature-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            margin-bottom: 15px;
-            color: #3498db;
-        }
-
-        /* FAQ Section */
-        .faq {
-            padding: 80px 20px;
-            background: #f4f7f9;
-        }
-
-        .faq-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
+        .service-btn {
             background: white;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .faq-answer {
-            color: #7f8c8d;
-            font-size: 0.95rem;
-        }
-
-        /* Floating Contact Button */
-        .prime-support-btn {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: #2c3e50;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
+            padding: 25px;
+            border-radius: 16px;
             text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 1000;
-            transition: all 0.3s ease;
+            color: var(--dark);
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 12px;
         }
 
-        .prime-support-btn:hover {
+        .service-btn:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             transform: translateY(-5px);
-            background: #34495e;
         }
 
-        .support-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 5px;
-            color: #3498db;
-            font-weight: bold;
+        .service-btn.locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: #f1f5f9;
         }
 
-        .support-links {
-            display: flex;
-            gap: 15px;
-            font-size: 0.9rem;
-        }
-
-        .support-links a {
-            color: white;
-            text-decoration: none;
-            transition: 0.2s;
-        }
-
-        .support-links a:hover {
-            color: #2ecc71;
-        }
-
-        .format-tag {
-            background: #f1c40f;
-            color: #2c3e50;
-            font-size: 0.6rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 5px;
+        .service-icon { font-size: 2rem; }
+        .service-label { font-weight: 700; font-size: 1.1rem; }
+        .status-tag { 
+            font-size: 0.65rem; 
+            padding: 4px 10px; 
+            border-radius: 20px; 
+            background: #fee2e2; 
+            color: #ef4444; 
             font-weight: 800;
         }
 
-        /* Stats Bar Styling (The New One) */
+        /* --- STATS BAR --- */
         .stats-bar {
             display: flex;
             justify-content: space-around;
-            align-items: center;
-            background: #ffffff;
-            padding: 30px 10px;
-            border-radius: 20px;
-            margin: 40px auto;
-            max-width: 900px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            flex-wrap: wrap;
+            padding: 40px 0;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            margin: 60px 0;
         }
 
-        .stat-item-new h3 {
-            font-size: 1.8rem;
-            color: #3b82f6;
-            margin-bottom: 5px;
+        .stat-card h3 { font-size: 2rem; color: var(--primary); }
+        .stat-card p { font-size: 0.85rem; color: #64748b; font-weight: 600; }
+
+        /* --- FLOATING BUTTONS --- */
+        .support-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--dark); color: white;
+            padding: 12px 20px; border-radius: 100px;
+            display: flex; gap: 15px; font-size: 0.85rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 1000;
         }
 
-        .stat-item-new p {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .beta-pulse {
+            position: fixed; bottom: 30px; left: 30px;
+            background: var(--accent); color: white;
+            padding: 12px 24px; border-radius: 100px;
+            text-decoration: none; font-weight: 800;
+            animation: pulse 2s infinite; z-index: 1000;
         }
 
-        footer {
-            padding: 40px;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #95a5a6;
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
 
-        /* Responsive Mobile */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .hero { padding: 60px 20px; }
+        @media (max-width: 768px) {
+            .stats-bar { flex-direction: column; gap: 30px; }
+            .services-grid { grid-template-columns: 1fr; }
         }
-        /* Beta Feedback Floating Button */
-.beta-btn {
-    position: fixed;
-    bottom: 25px;
-    left: 25px; /* Opposite side of your Support button */
-    background: #e67e22; /* Bold Orange */
-    color: white;
-    padding: 12px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 0.85rem;
-    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
-    z-index: 2000; /* Stays on top of everything */
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: 2px solid white;
-}
-
-.beta-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: #d35400;
-    box-shadow: 0 15px 25px rgba(230, 126, 34, 0.4);
-}
-
-/* Pulse animation to grab attention */
-@keyframes pulse-orange {
-    0% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(230, 126, 34, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0); }
-}
-
-.beta-btn {
-    animation: pulse-orange 2s infinite;
-}
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="logo">Prime<span>Templates</span></div>
+        <div style="font-size: 0.8rem; font-weight: 700; color: #64748b;">VERSION 2.0</div>
+    </nav>
+
     <section class="hero">
-        <div class="founder-badge">Founder's Choice</div>
-        <h1>Stop Applying with Boring Resumes. <span>Get Hired Faster.</span></h1>
-        <p>Premium, ATS-friendly resume templates designed specifically for Indian Freshers. Start your career with confidence for just <b>₹59</b>.</p>
-        <a href="templates.html" class="cta-button">Browse Templates →</a>
+        <div class="founder-badge">✨ Expertly Crafted for 2025</div>
+        <h1>Your Career Deserves More Than a <span>Boring Resume.</span></h1>
+        <p>Premium, ATS-optimized templates built to get Indian freshers noticed by top recruiters. Launch your career for just <b>₹59</b>.</p>
+        
+        <a href="templates.html" class="main-cta">
+            Explore Template Gallery
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
 
-        <div class="stats">
-            <div class="stat-item">
-                <span class="stat-number">ATS</span>
-                <span class="stat-label">Friendly Designs</span>
+        <div class="stats-bar" style="width: 100%; max-width: 800px;">
+            <div class="stat-card">
+                <h3>98%</h3>
+                <p>ATS SCORE</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">₹59</span>
-                <span class="stat-label">Affordable Price</span>
+            <div class="stat-card">
+                <h3>500+</h3>
+                <p>USERS HIRED</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-number">Fast</span>
-                <span class="stat-label">Email Delivery</span>
+            <div class="stat-card">
+                <h3>₹59</h3>
+                <p>STARTING PRICE</p>
             </div>
         </div>
     </section>
 
-    <section class="features">
-        <h2 class="section-title">Why PrimeTemplates?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="icon">🤖</div>
-                <h3>ATS-Friendly</h3>
-                <p>Our templates are designed to pass through Applicant Tracking Systems.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">⚡</div>
-                <h3>Instant Impact</h3>
-                <p>Visual layouts that grab attention in 6 seconds.</p>
-            </div>
-            <div class="feature-card">
-                <div class="icon">📱</div>
-                <h3>Mobile Editable</h3>
-                <p>Edit your resume on the go using Google Docs or MS Word.</p>
-            </div>
-        </div>
-    </section>
+    <div class="services-container">
+        <h2>Prime <span>Launchpad</span></h2>
+        <div class="services-grid">
+            <a href="templates.html" class="service-btn">
+                <span class="service-icon">📄</span>
+                <span class="service-label">Resume Templates</span>
+                <p style="font-size: 0.8rem; color: #64748b;">10+ ATS-Friendly Designs</p>
+            </a>
 
-    <section class="faq">
-        <h2 class="section-title">Common Questions</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <p class="faq-question">How will I receive my template?</p>
-                <p class="faq-answer">We will email the ZIP file to you within 24 hours.</p>
+            <div class="service-btn locked">
+                <span class="service-icon">✉️</span>
+                <span class="service-label">Cover Letters</span>
+                <span class="status-tag">COMING SOON</span>
             </div>
-            <div class="faq-item">
-                <p class="faq-question">What formats are included?</p>
-                <p class="faq-answer">You get a PDF, PPT, and DOCX formats.</p>
+
+            <div class="service-btn locked">
+                <span class="service-icon">🔗</span>
+                <span class="service-label">LinkedIn Revamp</span>
+                <span class="status-tag">DEVELOPING</span>
             </div>
-        </div>
-    </section>
-
-    <div style="background: #ebf5fb; padding: 20px; border-radius: 15px; margin: 40px auto; max-width: 800px; border: 1px solid #3498db; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-        <div style="text-align: left;">
-            <h4 style="color: #2c3e50; margin-bottom: 5px;">Is your current resume failing you?</h4>
-            <p style="color: #576574; font-size: 0.9rem;">Test your resume against our 2025 ATS Scanner.</p>
-        </div>
-        <a href="score.html" style="background: #3498db; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Check Resume Health →</a>
-    </div>
-
-    <div class="stats-bar">
-        <div class="stat-item">
-            <h3 style="color: #3b82f6; font-size: 1.8rem;">500+</h3>
-            <p style="color: #64748b; font-size: 0.9rem;">Resume Sold</p>
-        </div>
-        <div class="stat-item">
-            <h3 style="color: #3b82f6; font-size: 1.8rem;">4.5/5</h3>
-            <p style="color: #64748b; font-size: 0.9rem;">User Rating ⭐</p>
-        </div>
-        <div class="stat-item">
-            <h3 style="color: #3b82f6; font-size: 1.8rem;">98%</h3>
-            <p style="color: #64748b; font-size: 0.9rem;">ATS-Friendly</p>
         </div>
     </div>
 
-    <div class="prime-support-btn">
-        <span class="support-label">Prime Support</span>
-        <div class="support-links">
-            <a href="mailto:primetemplates1@gmail.com">Email</a>
-            <span>|</span>
-            <a href="https://instagram.com/primetemplate1" target="_blank">Instagram</a>
-        </div>
-        <div class="format-tag">DOCX • PDF • GOOGLE DOCS</div>
-    </div>
-    <a href="https://forms.gle/avFr3Kvh6Htk4rb28" target="_blank" class="beta-btn">
-    <span>🚀</span> Join Beta & Get 50% Off
-</a>
+    <a href="https://forms.gle/avFr3Kvh6Htk4rb28" target="_blank" class="beta-pulse">
+        🚀 BETA: GET 50% OFF
+    </a>
 
-    <footer>
-        &copy; 2025 PrimeTemplates. Built for Freshers, by a Founder.
+    <div class="support-float">
+        <a href="mailto:primetemplates1@gmail.com" style="color:white; text-decoration:none;">Email</a>
+        <span style="color: #475569;">|</span>
+        <a href="https://instagram.com/primetemplate1" target="_blank" style="color:white; text-decoration:none;">Instagram</a>
+    </div>
+
+    <footer style="padding: 60px 20px; text-align: center; color: #94a3b8; font-size: 0.85rem;">
+        &copy; 2025 PrimeTemplates. Designed for the ambitious. 
+        <br>Built by a Founder, for the next generation of Freshers.
     </footer>
 
 </body>
